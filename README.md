@@ -37,7 +37,7 @@ Then launch the container, with an external volume to the directory you created 
 docker run -d -v /data/docker/volumes/tinydns-data/:/data -p 53:53/udp skurtzemann/tinydns
 ```
 
-Then check the DNS server is working
+Then check that the DNS server is working
 
 ```
 $ dig example.com soa @127.0.0.1 +short
