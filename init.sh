@@ -1,12 +1,13 @@
 #!/bin/bash
 
 if mountpoint -q /data; then
-	if [ -f /data/tinydns.data ]; then
+	if [ -f /data/tinydns.data ] && [ -f /data/axfrdns.tcp ]; then
 		/rebuild_tinydns-data.sh
-		echo "Starting tinydns (svscan)"
+		/rebuild_axfrdns-tcp.sh
+		echo "Starting tinydns and axfrdns (svscan)"
 		svscan /etc/service
 	else
-		echo "/data/tinydns.data not found: exiting"
+		echo "Ressources files (tinydns.data, axfrdns.tcp) not found in /data: exiting"
 		exit 1
 	fi
 else
